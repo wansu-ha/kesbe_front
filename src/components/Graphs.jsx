@@ -31,7 +31,7 @@ const Graphs = ({ epts, kdpi, excelData }) => {
   // Y축 변환: 0~100 입력값을 20%~90% 범위로 변환 (위 -> 아래 방향 유지)
   const y =
     (100 - y_max_percent) + (1 - rawY / 100) * (y_max_percent - y_min_percent);
-
+    
   // 마우스 이벤트 핸들러
   const handleMouseMove = (event) => {
     const graphRect = event.currentTarget.getBoundingClientRect(); // 그래프 위치
@@ -47,20 +47,20 @@ const Graphs = ({ epts, kdpi, excelData }) => {
       ((mousePercentX - x_min_percent) / (x_max_percent - x_min_percent)) * 100
     );
     let calculatedEpts = Math.round(
-      100 - ((mousePercentY - y_min_percent) / (y_max_percent - y_min_percent)) * 100
+      (1 - ((mousePercentY - (100 - y_max_percent)) / (y_max_percent - y_min_percent))) * 100
     );
 
-    calculatedKdpi = Math.min(Math.max(calculatedKdpi, 1), 100);
-    calculatedEpts = Math.min(Math.max(calculatedEpts, 1), 100);
+    //calculatedKdpi = Math.min(Math.max(calculatedKdpi, 1), 100);
+    //calculatedEpts = Math.min(Math.max(calculatedEpts, 1), 100);
 
      // kdpi와 epts에 따라 데이터를 찾음
     const matchedRow = findMatchingRow(excelData, calculatedKdpi, calculatedEpts);
     if (!matchedRow) {
-      alert("No matching data found.");
+      //alert("No matching data found.");
+      setTooltip({});
       return;
     }
 
-    console.log(matchedRow)
     const results = calculateSurvival(matchedRow);
 
     // 툴팁 업데이트
@@ -70,6 +70,7 @@ const Graphs = ({ epts, kdpi, excelData }) => {
       y: event.clientY,
       kdpi: calculatedKdpi,
       epts: calculatedEpts,
+      wait: null,
       kidney: results.kidney,
     });
   };
@@ -89,9 +90,6 @@ const Graphs = ({ epts, kdpi, excelData }) => {
       }}>
         <h2 className="text-lg font-semibold text-gray-700 mb-4 text-center">
           Waitlist vs. Post-Transplant Survival with Legend
-          <div>KDPI: {tooltip.kdpi}</div>
-          <div>EPTS: {tooltip.epts}</div>
-          <div>Survival (10yr): {tooltip.kidney}%</div>
         </h2>
         <div
           className="flex h-full justify-center"
@@ -296,6 +294,25 @@ const Graphs = ({ epts, kdpi, excelData }) => {
         </div>
       </div>
 
+      {/* 툴팁 */}
+      {tooltip.visible && (
+        <div
+          style={{
+            position: "fixed",
+            left: `${tooltip.x}px`,
+            top: `${tooltip.y}px`,
+            transform: "translate(10%, -220%)",
+            background: "white",
+            padding: "8px",
+            borderRadius: "4px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            pointerEvents: "none",
+            zIndex: 10,
+          }}
+        >
+          <div>{tooltip.wait || tooltip.kidney}%</div>
+        </div>
+      )}
     </div>
   );
 };

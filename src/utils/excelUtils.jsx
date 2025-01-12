@@ -33,7 +33,7 @@ export const calculateSurvival = (matchedRow) => {
   const survivalBenefit = kidneySurvival - waitlistSurvival;
 
   return {
-    waitlist: waitlistSurvival.toFixed(2),
+    wait: waitlistSurvival.toFixed(2),
     kidney: kidneySurvival.toFixed(2),
     benefit: survivalBenefit.toFixed(2),
   };

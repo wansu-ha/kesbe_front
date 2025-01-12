@@ -20,7 +20,7 @@ const App = () => {
     fetchData();
   }, []);
   const [results, setResults] = useState({
-    waitlist: 0,
+    wait: 0,
     kidney: 0,
     benefit: 0,
   });
@@ -72,7 +72,7 @@ const App = () => {
           <ResultCard
             title="Remains on waitlist"
             base="based on the candidate's EPTS"
-            value={results.waitlist}
+            value={results.wait}
             color="gray"
           />
           <ResultCard
