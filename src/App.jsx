@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Estimator from "./components/Estimator";
 import ResultCard from "./components/ResultCard";
 import Graphs from "./components/Graphs";
 import InputField from "./components/InputField"; // InputField 컴포넌트 추가
+import { loadExcelData } from "./utils/excelUtils";
+import excelFile from "./data/predicted_survival10.xlsx";
 
 const App = () => {
   const [epts, setEpts] = useState(50); // Default EPTS
   const [kdpi, setKdpi] = useState(50); // Default KDPI
+  const [excelData, setExcelData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await loadExcelData(excelFile);
+      setExcelData(data);
+    };
+
+    fetchData();
+  }, []);
   const [results, setResults] = useState({
-    waitlistSurvival: null,
-    kidneySurvival: null,
-    survivalBenefit: null,
+    waitlist: 0,
+    kidney: 0,
+    benefit: 0,
   });
 
   const handleInputChange = (e, type) => {
@@ -48,7 +60,7 @@ const App = () => {
             type="kdpi"
           />
         </div>
-        <Estimator epts={epts} kdpi={kdpi} onEstimate={handleResults} />
+        <Estimator epts={epts} kdpi={kdpi} excelData={excelData} onEstimate={handleResults} />
       </div>
 
       {/* Result Cards */}
@@ -83,7 +95,7 @@ const App = () => {
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Graphs
         </h2>
-        <Graphs epts={epts} kdpi={kdpi} />
+        <Graphs epts={epts} kdpi={kdpi} excelData={excelData} />
       </div>
     </div>
   );

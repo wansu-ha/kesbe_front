@@ -1,52 +1,22 @@
 import React, { useState, useEffect } from "react";
-import * as XLSX from "xlsx";
-import excelFile from "../data/predicted_survival10.xlsx"; // 엑셀 파일 경로
+import { findMatchingRow, calculateSurvival } from "../utils/excelUtils";
 
-const Estimator = ({ epts, kdpi, onEstimate }) => {
-  const [excelData, setExcelData] = useState([]);
-
-  // 컴포넌트 로드시 엑셀 파일 읽기
-  useEffect(() => {
-    const fetchExcelData = async () => {
-      try {
-        const response = await fetch(excelFile); // 고정된 경로에서 엑셀 파일 가져오기
-        const arrayBuffer = await response.arrayBuffer();
-        const workbook = XLSX.read(arrayBuffer, { type: "array" });
-        const sheetName = workbook.SheetNames[0]; // 첫 번째 시트
-        const worksheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(worksheet);
-        setExcelData(jsonData); // 엑셀 데이터를 상태에 저장
-        console.log(excelData);
-      } catch (error) {
-        console.error("Error loading Excel file:", error);
-      }
-    };
-
-    fetchExcelData();
-  }, []); // 컴포넌트 로드시 1회 실행
-
+const Estimator = ({ epts, kdpi, excelData, onEstimate }) => {
   const handleEstimate = () => {
     if (excelData.length === 0) {
-      alert("Excel data not loaded yet.");
+      alert("Excel data is still loading. Please wait and try again.");
       return;
     }
 
-    // kdpi와 epts에 따라 데이터를 찾음
-    const matchedRow = excelData.find(
-      (row) => row.K_KDPI === parseFloat(kdpi) && row.K_EPTS === parseFloat(epts)
-    );
-
+     // kdpi와 epts에 따라 데이터를 찾음
+    const matchedRow = findMatchingRow(excelData, kdpi, epts);
     if (!matchedRow) {
-      alert("No matching data found in the Excel file.");
+      alert("No matching data found.");
       return;
     }
 
-    // 결과 출력
-    onEstimate({
-      waitlist: matchedRow.predicted_survival10.toFixed(2) - 10,
-      kidney: matchedRow.predicted_survival10.toFixed(2),
-      benefit: 10
-    });
+    const results = calculateSurvival(matchedRow);
+    onEstimate(results);
   };
 
   return (
