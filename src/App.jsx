@@ -38,13 +38,14 @@ const App = () => {
   return (
     <div className="flex flex-col items-center bg-gradient-to-r from-blue-50 to-gray-50 min-h-screen py-10 space-y-10">
       {/* 입력 필드 */}
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           KDPI-EPTS Survival Benefit Estimator
         </h1>
         <p>
         Please enter the candidate's Estimated Post-Transplant Survival (EPTS) and the kidney's Kidney Donor Profile Index (KDPI).
         </p>
+        <br />
         <div className="flex space-x-4 justify-center mb-6">
           {/* InputField 컴포넌트를 사용 */}
           <InputField
@@ -64,7 +65,7 @@ const App = () => {
       </div>
 
       {/* Result Cards */}
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-5xl">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Predicted 5-year survival if the candidate..
         </h2>
@@ -91,7 +92,7 @@ const App = () => {
       </div>
 
       {/* Graphs */}
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-5xl">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Graphs
         </h2>

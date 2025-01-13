@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { findMatchingRow, calculateSurvival } from "../utils/excelUtils";
-import waitlist_graph from "../imgs/survival_legend.png";
+import waitlist_graph from "../imgs/waitlist_graph.png";
 import survival_graph from "../imgs/survivalgraph.png";
-import survival_legend from "../imgs/survivallegend.png";
+import survival_legend from "../imgs/survival_legend.png";
 
 const Graphs = ({ epts, kdpi, excelData }) => {
   const [tooltip, setTooltip] = useState({

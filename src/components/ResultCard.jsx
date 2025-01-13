@@ -1,15 +1,29 @@
 import React from "react";
 
 const ResultCard = ({ title, base, value, color }) => {
-  const colorClasses = {
-    gray: "bg-gray-100 text-gray-800",
-    green: "bg-green-100 text-green-800",
-    blue: "bg-blue-100 text-blue-800",
-  };
+  function getColor(value) {
+    const colors = [
+      "#6B000C",        //  0~10
+      "darkred",        // 11~20
+      "firebrick",      // 21~30
+      "red",            // 31~40
+      "lightcoral",     // 41~50
+      "lightpink",      // 51~60
+      "lavenderblush",  // 61~70
+      "lightcyan",      // 71~80
+      "skyblue",        // 81~90
+      "blue"            // 91~100
+    ];
+
+    return colors[value];
+  }
+
+  value = Math.min(Math.max(value, 0), 100)
 
   return (
     <div
-      className={`rounded-lg p-6 shadow-md text-center ${colorClasses[color]}`}
+      className={`rounded-lg p-6 shadow-md text-center`}
+      style={{ backgroundColor: getColor(Math.ceil(value / 10) - 1) }}
     >
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
       <small>{base}</small>
