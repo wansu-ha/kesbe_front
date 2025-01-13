@@ -91,38 +91,67 @@ const Graphs = ({ epts, kdpi, excelData }) => {
         <h2 className="text-lg font-semibold text-gray-700 mb-4 text-center">
           Waitlist vs. Post-Transplant Survival with Legend
         </h2>
+        <br />
         <div
           className="flex h-full justify-center"
           style={{
             width: "100%",
-          }}>
+          }}
+        >
           {/* Waitlist Graph */}
-          <div className="relative" style={{ width: "100px", height: "100%", marginRight: "20px" }}>
-            {/* "Waitlist" Text */}
+          <div className="flex" style={{ width: "100px", height: "100%", marginRight: "20px" }}>
             <div
               style={{
-                position: "absolute",
-                top: "-20px", // 범례 상단에 배치
-                left: "50%",
-                transform: "translateX(-50%)", // 중앙 정렬
-                fontSize: "14px",
-                fontWeight: "bold",
-                color: "black",
-                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between", // 숫자 간 간격 동일하게 분배
+                height: "calc(70% + 20px)", // 그래프와 동일한 높이
+                marginRight: "10px", // 그래프와 간격
+                marginTop: "-10px",
               }}
             >
-              Waitlist
+              {[100, 80, 60, 40, 20, 0].map((num) => (
+                <div
+                  key={num}
+                  style={{
+                    fontSize: "12px",
+                    color: "black",
+                    textAlign: "right", // 오른쪽 정렬
+                  }}
+                >
+                  {num}
+                </div>
+              ))}
             </div>
+            
             <div
-            style={{
-              backgroundImage: `url(${waitlist_graph})`,
+              style={{
+                backgroundImage: `url(${waitlist_graph})`,
                 backgroundSize: "100% 100%", // 이미지가 컨테이너에 맞게 조정
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
                 width: "100%", // 컨테이너 전체에 맞춤
                 height: "70%", // 컨테이너 전체에 맞춤
-            }}
-          />
+              }}
+              //onMouseMove={handleMouseMove}
+              //onMouseLeave={handleMouseLeave}
+            >
+              {/* "Waitlist" Text */}
+              <div
+                style={{
+                  position: "relative",
+                  top: "-30px", // 범례 상단에 배치
+                  //left: "10%",
+                  //transform: "translateX(-50%)", // 중앙 정렬
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  color: "black",
+                  textAlign: "center",
+                }}
+              >
+                Waitlist
+              </div>
+            </div>
           </div>
 
           {/* Survival Graph */}
@@ -156,47 +185,72 @@ const Graphs = ({ epts, kdpi, excelData }) => {
           </div>
 
           {/* Survival Legend (오른쪽 범례) */}
-          <div className="relative" style={{ width: "100px", height: "100%", marginLeft: "20px"}}>
-            {/* "Legend" Text */}
-              <div
-                style={{
-                  position: "absolute",
-                top: "-20px", // 범례 상단에 배치
-                left: "50%",
-                transform: "translateX(-50%)", // 중앙 정렬
-                fontSize: "14px",
-                fontWeight: "bold",
-                color: "black",
-                textAlign: "center",
-                }}
-              >
-              Legend
-              </div>
+          <div className="flex" style={{ width: "100px", height: "100%", marginLeft: "20px"}}>
             <div
               style={{
                 backgroundImage: `url(${survival_legend})`,
                 backgroundSize: "100% 100%", // 이미지가 컨테이너에 맞게 조정
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                width: "100%", // 컨테이너 전체에 맞춤
+                width: "30%", // 컨테이너 전체에 맞춤
                 height: "70%", // 컨테이너 전체에 맞춤
               }}
-            />
-            {/* Rotated Text */}
-            <div
-              style={{
-                position: "absolute",
-                right: "-80px", // 범례 옆에 배치
-                top: "35%",
-                transform: "translateY(-50%) rotate(-90deg)", // 텍스트 회전
-                transformOrigin: "center",
-                fontSize: "12px",
+            >
+              {/* "Legend" Text */}
+              <div
+                style={{
+                  position: "relative",
+                top: "-30px", // 범례 상단에 배치
+                //left: "80%",
+                //transform: "translateX(-50%)", // 중앙 정렬
+                fontSize: "14px",
                 fontWeight: "bold",
                 color: "black",
-                whiteSpace: "nowrap",
+                textAlign: "center",
+                }}
+              >
+                Legend
+              </div>
+
+              {/* Rotated Text */}
+              <div
+                style={{
+                  position: "relative",
+                  right: "-50px", // 범례 옆에 배치
+                  top: "60%",
+                  transform: "translateY(-50%) rotate(-90deg)", // 텍스트 회전
+                  transformOrigin: "center",
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  color: "black",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                5-year patient survival (%)
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between", // 숫자 간 간격 동일하게 분배
+                height: "calc(70% + 20px)", // 그래프와 동일한 높이
+                marginLeft: "10px", // 그래프와 간격
+                marginTop: "-10px",
               }}
             >
-              5-year patient survival (%)
+              {[100, 80, 60, 40, 20, 0].map((num) => (
+                <div
+                  key={num}
+                  style={{
+                    fontSize: "12px",
+                    color: "black",
+                    textAlign: "left", // 오른쪽 정렬
+                  }}
+                >
+                  {num}
+                </div>
+              ))}
             </div>
           </div>
 
