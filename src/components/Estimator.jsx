@@ -7,15 +7,8 @@ const Estimator = ({ epts, kdpi, excelData, onEstimate }) => {
       alert("Excel data is still loading. Please wait and try again.");
       return;
     }
-
-     // kdpi와 epts에 따라 데이터를 찾음
-    const matchedRow = findMatchingRow(excelData, kdpi, epts);
-    if (!matchedRow) {
-      alert("No matching data found.");
-      return;
-    }
-
-    const results = calculateSurvival(matchedRow);
+    
+    const results = calculateSurvival(excelData, kdpi, epts);
     onEstimate(results);
   };
 

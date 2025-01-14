@@ -32,18 +32,7 @@ const useTooltip = ({ x_min_percent, x_max_percent, y_min_percent, y_max_percent
       (1 - ((mousePercentY - (100 - y_max_percent)) / (y_max_percent - y_min_percent))) * 100
     );
 
-    // 범위를 벗어나지 않도록 클램핑
-    calculatedKdpi = Math.min(Math.max(calculatedKdpi, 0), 100);
-    calculatedEpts = Math.min(Math.max(calculatedEpts, 0), 100);
-
-    // 데이터 찾기
-    const matchedRow = findMatchingRow(excelData, calculatedKdpi, calculatedEpts);
-    if (!matchedRow) {
-      setTooltip({ visible: false });
-      return;
-    }
-
-    const results = calculateSurvival(matchedRow);
+    const results = calculateSurvival(excelData, calculatedKdpi, calculatedEpts);
 
     // 툴팁 업데이트
     setTooltip({
@@ -73,7 +62,7 @@ const useTooltip = ({ x_min_percent, x_max_percent, y_min_percent, y_max_percent
     const y =
       (100 - y_max_percent) + (1 - rawY / 100) * (y_max_percent - y_min_percent);
 
-    return setCoord({ x, y });
+    setCoord({ x, y });
   }
 
   return { tooltip, coord, handleMouseMove, handleMouseLeave, handleMarkerCoord };

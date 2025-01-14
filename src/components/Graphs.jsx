@@ -4,13 +4,13 @@ import waitlist_graph from "../imgs/waitlist_graph.png";
 import survival_graph from "../imgs/survivalgraph.png";
 import survival_legend from "../imgs/survival_legend.png";
 
-const Graphs = ({ epts, kdpi, excelData }) => {
+const Graphs = ({ epts, kdpi, excelData, }) => {
   const waitlistTooltip = useTooltip({
     x_min_percent: 0,
     x_max_percent: 100,
     y_min_percent: 0,
     y_max_percent: 50,
-    excelData,
+    excelData: excelData,
   });
 
   const survivalTooltip = useTooltip({
@@ -18,7 +18,7 @@ const Graphs = ({ epts, kdpi, excelData }) => {
     x_max_percent: 92,
     y_min_percent: 15,
     y_max_percent: 90,
-    excelData,
+    excelData: excelData,
   });
 
   const benefitTooltip = useTooltip({
@@ -26,7 +26,7 @@ const Graphs = ({ epts, kdpi, excelData }) => {
     x_max_percent: 92,
     y_min_percent: 15,
     y_max_percent: 95,
-    excelData,
+    excelData: excelData,
   });
 
   // 마커의 크기 정의
@@ -34,15 +34,15 @@ const Graphs = ({ epts, kdpi, excelData }) => {
 
   useEffect(() => {
     survivalTooltip.handleMarkerCoord(epts, kdpi); // 마커 좌표 업데이트
-  }, [epts, kdpi, survivalTooltip]); // epts와 kdpi가 변경될 때만 실행
+  }, [epts, kdpi]); // epts와 kdpi가 변경될 때만 실행
 
   useEffect(() => {
     waitlistTooltip.handleMarkerCoord(epts, 50); // 마커 좌표 업데이트
-  }, [epts, waitlistTooltip]); // epts와 kdpi가 변경될 때만 실행
+  }, [epts]); // epts와 kdpi가 변경될 때만 실행
 
   useEffect(() => {
     benefitTooltip.handleMarkerCoord(epts, kdpi); // 마커 좌표 업데이트
-  }, [epts, kdpi, benefitTooltip]); // epts와 kdpi가 변경될 때만 실행
+  }, [epts, kdpi]); // epts와 kdpi가 변경될 때만 실행
 
   return (
     <div className="flex flex-col items-center space-y-10 w-full max-w-5xl mx-auto">

@@ -16,25 +16,25 @@ export const loadExcelData = async (excelFile) => {
   }
 };
 
-// KDPI와 EPTS에 따라 데이터를 검색하는 함수
-export const findMatchingRow = (excelData, kdpi, epts) => {
-  return excelData.find(
+// 생존률 계산 로직
+export const calculateSurvival = (excelData, kdpi, epts) => {
+  kdpi = Math.min(Math.max(kdpi, 1), 100);
+  epts = Math.min(Math.max(epts, 1), 100);
+  
+  let matchedRow = excelData.find(
     (row) =>
       parseFloat(row.K_KDPI) === parseFloat(kdpi) &&
       parseFloat(row.K_EPTS) === parseFloat(epts)
   );
-};
-
-// 생존률 계산 로직
-export const calculateSurvival = (matchedRow) => {
-  const predictedSurvival10 = parseFloat(matchedRow.predicted_survival10);
-  const waitlistSurvival = predictedSurvival10 - 10; // 예제 계산
-  const kidneySurvival = predictedSurvival10; // 예제 계산
-  const survivalBenefit = kidneySurvival - waitlistSurvival;
-
+  
+  if (!matchedRow) {
+    alert("(" + epts + ", " + kdpi + ") No matching data found.");
+    return;
+  }
+  
   return {
-    wait: waitlistSurvival.toFixed(2),
-    kidney: kidneySurvival.toFixed(2),
-    benefit: survivalBenefit.toFixed(2),
+    wait: parseFloat(matchedRow.wait).toFixed(2),
+    kidney: parseFloat(matchedRow.kidney).toFixed(2),
+    benefit: parseFloat(matchedRow.benefit).toFixed(2),
   };
 };
