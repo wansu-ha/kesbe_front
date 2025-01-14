@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/kesbe_front/static/css/main.f9a6f7a4.css",
+    "main.js": "/kesbe_front/static/js/main.a6db6fce.js",
+    "static/js/488.a12d759e.chunk.js": "/kesbe_front/static/js/488.a12d759e.chunk.js",
+    "static/media/survival_data.xlsx": "/kesbe_front/static/media/survival_data.15925f7c40097b111cbf.xlsx",
+    "static/media/survivalgraph.png": "/kesbe_front/static/media/survivalgraph.6893fb8e7580296bd070.png",
+    "index.html": "/kesbe_front/index.html",
+    "main.f9a6f7a4.css.map": "/kesbe_front/static/css/main.f9a6f7a4.css.map",
+    "main.a6db6fce.js.map": "/kesbe_front/static/js/main.a6db6fce.js.map",
+    "488.a12d759e.chunk.js.map": "/kesbe_front/static/js/488.a12d759e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f9a6f7a4.css",
+    "static/js/main.a6db6fce.js"
+  ]
+}
