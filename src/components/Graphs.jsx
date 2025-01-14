@@ -9,15 +9,15 @@ const Graphs = ({ epts, kdpi, excelData, }) => {
     x_min_percent: 0,
     x_max_percent: 100,
     y_min_percent: 0,
-    y_max_percent: 50,
+    y_max_percent: 100,
     excelData: excelData,
   });
 
   const survivalTooltip = useTooltip({
-    x_min_percent: 20,
+    x_min_percent: 20.5,
     x_max_percent: 92,
-    y_min_percent: 15,
-    y_max_percent: 90,
+    y_min_percent: 5,
+    y_max_percent: 84,
     excelData: excelData,
   });
 
@@ -33,12 +33,12 @@ const Graphs = ({ epts, kdpi, excelData, }) => {
   const markerSize = 10;
 
   useEffect(() => {
-    survivalTooltip.handleMarkerCoord(epts, kdpi); // 마커 좌표 업데이트
-  }, [epts, kdpi]); // epts와 kdpi가 변경될 때만 실행
+    waitlistTooltip.handleMarkerCoord(epts, 1); // 마커 좌표 업데이트
+  }, [epts]); // epts와 kdpi가 변경될 때만 실행
 
   useEffect(() => {
-    waitlistTooltip.handleMarkerCoord(epts, 50); // 마커 좌표 업데이트
-  }, [epts]); // epts와 kdpi가 변경될 때만 실행
+    survivalTooltip.handleMarkerCoord(epts, kdpi); // 마커 좌표 업데이트
+  }, [epts, kdpi]); // epts와 kdpi가 변경될 때만 실행
 
   useEffect(() => {
     benefitTooltip.handleMarkerCoord(epts, kdpi); // 마커 좌표 업데이트
@@ -384,7 +384,7 @@ const Graphs = ({ epts, kdpi, excelData, }) => {
             zIndex: 10,
           }}
         >
-          <div>{waitlistTooltip.tooltip.data.kidney || "No Data"}%</div>
+          <div>{waitlistTooltip.tooltip.data.wait || "No Data"}%</div>
         </div>
       )}
       {benefitTooltip.tooltip.visible && (
@@ -402,7 +402,7 @@ const Graphs = ({ epts, kdpi, excelData, }) => {
             zIndex: 10,
           }}
         >
-          <div>{benefitTooltip.tooltip.data.kidney || "No Data"}%</div>
+          <div>{benefitTooltip.tooltip.data.benefit || "No Data"}%</div>
         </div>
       )}
     </div>

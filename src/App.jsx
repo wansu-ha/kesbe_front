@@ -75,19 +75,52 @@ const App = () => {
             title="Remains on waitlist"
             base="based on the candidate's EPTS"
             value={results.wait}
-            color="gray"
+            colors={[
+              "#6B000C",        //  0~10
+              "darkred",        // 11~20
+              "firebrick",      // 21~30
+              "red",            // 31~40
+              "lightcoral",     // 41~50
+              "lightpink",      // 51~60
+              "lavenderblush",  // 61~70
+              "lightcyan",      // 71~80
+              "skyblue",        // 81~90
+              "blue"            // 91~100
+            ]}
           />
           <ResultCard
             title="Receives this kidney"
             base="based on the candidate's EPTS and the offered kidney's KDPI"
             value={results.kidney}
-            color="green"
+            colors={[
+              "#6B000C",        //  0~10
+              "darkred",        // 11~20
+              "firebrick",      // 21~30
+              "red",            // 31~40
+              "lightcoral",     // 41~50
+              "lightpink",      // 51~60
+              "lavenderblush",  // 61~70
+              "lightcyan",      // 71~80
+              "skyblue",        // 81~90
+              "blue"            // 91~100
+            ]}
           />
           <ResultCard
             title="Survival benefit"
             base="based on the candidate's EPTS and the offered kidney's KDPI"
             value={results.benefit}
-            color="blue"
+            colors={[
+              "#56F348",  //  0~10
+              "#56F348",  // 11~20
+              "#56F348",  // 21~30
+              "#9AF796",  // 31~40
+              "#4BF23A",  // 41~50
+              "#3DE12A",  // 51~60
+              "#2DAE1E",  // 61~70
+              "#249017",  // 71~80
+              "#1E7E13",  // 81~90
+              "#16650D"   // 91~100
+            ]}
           />
         </div>
       </div>

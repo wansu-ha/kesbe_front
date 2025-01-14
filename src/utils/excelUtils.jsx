@@ -28,7 +28,7 @@ export const calculateSurvival = (excelData, kdpi, epts) => {
   );
   
   if (!matchedRow) {
-    alert("(" + epts + ", " + kdpi + ") No matching data found.");
+    //alert("(" + epts + ", " + kdpi + ") No matching data found.");
     return;
   }
   
