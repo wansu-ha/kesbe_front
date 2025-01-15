@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { findMatchingRow, calculateSurvival } from "../utils/excelUtils";
+import { calculateSurvival } from "../utils/excelUtils";
 
 const useTooltip = ({ x_min_percent, x_max_percent, y_min_percent, y_max_percent, excelData }) => {
   const [tooltip, setTooltip] = useState({

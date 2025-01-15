@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { findMatchingRow, calculateSurvival } from "../utils/excelUtils";
+import React from "react";
+import { calculateSurvival } from "../utils/excelUtils";
 
 const Estimator = ({ epts, kdpi, excelData, onEstimate }) => {
   const handleEstimate = () => {
