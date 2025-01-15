@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import useTooltip from "../hooks/useTooltip";
-import survival_graph from "../imgs/survivalgraph.png";
+import survival_graph from "../imgs/survival_graph.png";
 import survival_legend from "../imgs/survival_legend.png";
 import Tooltip from "./Tooltip";
 
