@@ -15,10 +15,10 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
   });
 
   const survivalTooltip = useTooltip({
-    x_min_percent: 20.5,
-    x_max_percent: 92,
-    y_min_percent: 5,
-    y_max_percent: 84,
+    x_min_percent: 0,
+    x_max_percent: 100,
+    y_min_percent: 0,
+    y_max_percent: 100,
     excelData: excelData,
   });
 
@@ -123,81 +123,122 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
 
         {/* Survival Graph */}
         <div
+          className="relative bg-white shadow-lg rounded-lg p-4 overflow-hidden w-full"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between", // 숫자 간 간격 동일하게 분배
-            height: "calc(70% + 20px)", // 그래프와 동일한 높이
-            marginRight: "10px", // 그래프와 간격
-            marginTop: "-10px",
+            height: "70%", // 전체 컨테이너 높이
+            display: "grid", // CSS Grid 사용
+            gridTemplateColumns: "20px 30px 20fr", // 3열
+            gridTemplateRows: "20fr 30px 20px", // 3행
+            gap: "0", // 각 셀 간 간격
           }}
         >
-          {[100, 80, 60, 40, 20, 0].map((num) => (
-            <div
-              key={num}
-              style={{
-                fontSize: "12px",
-                color: "black",
-                textAlign: "right", // 오른쪽 정렬
-              }}
-            >
-              {num}
-            </div>
-          ))}
-        </div>
-        <div
-          className="relative"
-          style={{
-            backgroundImage: `url(${survival_graph})`,
-            backgroundSize: "100% 100%", // 이미지가 컨테이너에 맞게 조정
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "70%", // 컨테이너 전체에 맞춤
-            height: "70%", // 컨테이너 전체에 맞춤
-          }}
-          onMouseMove={(event) => {
-            const divRect = event.currentTarget.getBoundingClientRect();
-            const imgAspectRatio = 4 / 3; // 이미지 비율
-            const divAspectRatio = divRect.width / divRect.height;
-
-            let imgWidth, imgHeight, imgLeft, imgTop;
-
-            if (imgAspectRatio > divAspectRatio) {
-              // 이미지가 더 넓음 (폭 기준 조정)
-              imgWidth = divRect.width;
-              imgHeight = divRect.width / imgAspectRatio;
-              imgLeft = divRect.left;
-              imgTop = divRect.top + (divRect.height - imgHeight) / 2;
-            } else {
-              // 이미지가 더 높음 (높이 기준 조정)
-              imgWidth = divRect.height * imgAspectRatio;
-              imgHeight = divRect.height;
-              imgLeft = divRect.left + (divRect.width - imgWidth) / 2;
-              imgTop = divRect.top;
-            }
-
-            // 이미지 Rect
-            const imgRect = {
-              left: imgLeft,
-              top: imgTop,
-              width: imgWidth,
-              height: imgHeight,
-            };
-
-            survivalTooltip.handleMouseMove(event, imgRect);
-          }}
-          onMouseLeave={survivalTooltip.handleMouseLeave}
-        >
-          {/* 마커 표시 */}
+          {/* Rotated Text */}
           <div
-            className="marker"
             style={{
-              left: `${survivalTooltip.coord.x}%`,
-              top: `${survivalTooltip.coord.y}%`,
-              width: `${markerSize}px`,
-              height: `${markerSize}px`,
+              position: "relative",
+              right: "0px", // 범례 옆에 배치
+              top: "50%",
+              height: "20px",
+              transform: "translateY(-50%) rotate(-90deg)", // 텍스트 회전
+              transformOrigin: "center",
+              fontSize: "12px",
+              fontWeight: "bold",
+              color: "black",
+              whiteSpace: "nowrap",
             }}
-          />
+          >
+            EPTS
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between", // 숫자 간 간격 동일하게 분배
+              height: "calc(100% + 20px)", // 그래프와 동일한 높이
+              marginRight: "10px", // 그래프와 간격
+              marginTop: "-10px",
+            }}
+          >
+            {[100, 80, 60, 40, 20, 0].map((num) => (
+              <div
+                key={num}
+                style={{
+                  fontSize: "12px",
+                  color: "black",
+                  textAlign: "right", // 오른쪽 정렬
+                }}
+              >
+                {num}
+              </div>
+            ))}
+          </div>
+          <div
+            className="flex"
+            style={{
+              backgroundImage: `url(${survival_graph})`,
+              backgroundSize: "100% 100%", // 이미지가 컨테이너에 맞게 조정
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              width: "100%", // 컨테이너 전체에 맞춤
+              height: "100%", // 컨테이너 전체에 맞춤
+            }}
+            onMouseMove={(event) => { survivalTooltip.handleMouseMove(event, event.currentTarget.getBoundingClientRect()); }}
+            onMouseLeave= {survivalTooltip.handleMouseLeave}
+          >
+            {/* 마커 표시 */}
+            <div
+              className="marker"
+              style={{
+                left: `${survivalTooltip.coord.x}%`,
+                top: `${survivalTooltip.coord.y}%`,
+                width: `${markerSize}px`,
+                height: `${markerSize}px`,
+              }}
+            />
+          </div>
+          <div></div>
+          <div></div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between", // 숫자 간 동일 간격 분배
+              width: "calc(100% + 10px)",
+              height: "1%",
+              marginTop: "5px", // 그래프와의 간격
+              marginLeft: "-5px"
+            }}
+          >
+            {[0, 20, 40, 60, 80, 100].map((num) => (
+              <div
+                key={num}
+                style={{
+                  fontSize: "12px",
+                  color: "black",
+                  textAlign: "center", // 가운데 정렬
+                }}
+              >
+                {num}
+              </div>
+            ))}
+          </div>
+          <div></div>
+          <div></div>
+          {/* Rotated Text */}
+          <div
+            style={{
+              position: "relative",
+              right: "calc(-50% + 15px)", // 범례 옆에 배치
+              top: "0",
+              width: "30px",
+              transformOrigin: "center",
+              fontSize: "12px",
+              fontWeight: "bold",
+              color: "black",
+              whiteSpace: "nowrap",
+            }}
+          >
+            KDPI
+          </div>
         </div>
         {/* Survival Legend (오른쪽 범례) */}
         <div
