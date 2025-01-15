@@ -8,7 +8,11 @@ const useTooltip = ({ x_min_percent, x_max_percent, y_min_percent, y_max_percent
     y: 0,
     kdpi: 0,
     epts: 0,
-    data: null,
+    data: {
+      wait: 0,
+      kidney: 0,
+      benefit: 0,
+    },
   });
   
   const [coord, setCoord] = useState({

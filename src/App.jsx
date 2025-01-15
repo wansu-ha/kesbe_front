@@ -5,6 +5,7 @@ import Graphs from "./components/Graphs";
 import InputField from "./components/InputField"; // InputField 컴포넌트 추가
 import { loadExcelData } from "./utils/excelUtils";
 import survivalExcelFile from "./data/survival_data.xlsx";
+import './App.css';
 
 const App = () => {
   const [epts, setEpts] = useState(50); // Default EPTS

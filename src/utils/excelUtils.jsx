@@ -17,7 +17,7 @@ export const loadExcelData = async (excelFile) => {
 };
 
 // 생존률 계산 로직
-export const calculateSurvival = (excelData, kdpi, epts) => {
+export const calculateSurvival = (excelData = [], kdpi, epts) => {
   kdpi = Math.min(Math.max(kdpi, 1), 100);
   epts = Math.min(Math.max(epts, 1), 100);
   
