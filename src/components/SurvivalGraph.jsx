@@ -45,12 +45,13 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
         className="flex h-full justify-center"
         style={{
           width: "100%",
+          height: "calc(90% - 50px)",
         }}
       >
         {/* Waitlist Graph */}
         <div
           className="flex"
-          style={{ width: "100px", height: "100%", marginRight: "20px" }}
+          style={{ width: "100px", height: "calc(100% - 50px)", marginRight: "20px" }}
         >
           <div
             style={{
@@ -83,7 +84,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               width: "100%", // 컨테이너 전체에 맞춤
-              height: "70%", // 컨테이너 전체에 맞춤
+              height: "100%", // 컨테이너 전체에 맞춤
             }}
             onMouseMove={(event) =>
               waitlistTooltip.handleMouseMove(
@@ -107,7 +108,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
             <div
               style={{
                 position: "relative",
-                top: "-30px", // 범례 상단에 배치
+                top: "-40px", // 범례 상단에 배치
                 //left: "10%",
                 //transform: "translateX(-50%)", // 중앙 정렬
                 fontSize: "14px",
@@ -123,9 +124,9 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
 
         {/* Survival Graph */}
         <div
-          className="relative bg-white shadow-lg rounded-lg p-4 overflow-hidden w-full"
+          className="relative w-full"
           style={{
-            height: "70%", // 전체 컨테이너 높이
+            height: "100%", // 전체 컨테이너 높이
             display: "grid", // CSS Grid 사용
             gridTemplateColumns: "20px 30px 20fr", // 3열
             gridTemplateRows: "20fr 30px 20px", // 3행
@@ -243,7 +244,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
         {/* Survival Legend (오른쪽 범례) */}
         <div
           className="flex"
-          style={{ width: "100px", height: "100%", marginLeft: "20px" }}
+          style={{ width: "100px", height: "calc(100% - 50px)", marginLeft: "20px" }}
         >
           <div
             style={{
@@ -252,7 +253,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               width: "30%", // 컨테이너 전체에 맞춤
-              height: "70%", // 컨테이너 전체에 맞춤
+              height: "100%", // 컨테이너 전체에 맞춤
             }}
           >
             {/* "Legend" Text */}
