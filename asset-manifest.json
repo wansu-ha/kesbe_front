@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/kesbe_front/static/css/main.3ba3db4f.css",
-    "main.js": "/kesbe_front/static/js/main.2072711a.js",
+    "main.js": "/kesbe_front/static/js/main.4694f877.js",
     "static/js/488.a12d759e.chunk.js": "/kesbe_front/static/js/488.a12d759e.chunk.js",
     "static/media/survival_data.xlsx": "/kesbe_front/static/media/survival_data.15925f7c40097b111cbf.xlsx",
     "static/media/survival_graph.png": "/kesbe_front/static/media/survival_graph.ea3b73befa1a253ce517.png",
     "index.html": "/kesbe_front/index.html",
     "main.3ba3db4f.css.map": "/kesbe_front/static/css/main.3ba3db4f.css.map",
-    "main.2072711a.js.map": "/kesbe_front/static/js/main.2072711a.js.map",
+    "main.4694f877.js.map": "/kesbe_front/static/js/main.4694f877.js.map",
     "488.a12d759e.chunk.js.map": "/kesbe_front/static/js/488.a12d759e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3ba3db4f.css",
-    "static/js/main.2072711a.js"
+    "static/js/main.4694f877.js"
   ]
 }
