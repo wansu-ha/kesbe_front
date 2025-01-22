@@ -58,7 +58,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between", // 숫자 간 간격 동일하게 분배
-              height: "calc(70% + 20px)", // 그래프와 동일한 높이
+              height: "calc(100% + 20px)", // 그래프와 동일한 높이
               marginRight: "10px", // 그래프와 간격
               marginTop: "-10px",
             }}
@@ -294,7 +294,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between", // 숫자 간 간격 동일하게 분배
-              height: "calc(70% + 20px)", // 그래프와 동일한 높이
+              height: "calc(100% + 20px)", // 그래프와 동일한 높이
               marginLeft: "10px", // 그래프와 간격
               marginTop: "-10px",
             }}
