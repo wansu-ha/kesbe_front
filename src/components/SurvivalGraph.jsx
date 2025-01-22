@@ -254,24 +254,8 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
             >
               Legend
             </div>
-
-            {/* Rotated Text */}
-            <div
-              style={{
-                position: "relative",
-                right: "-50px", // 범례 옆에 배치
-                top: "60%",
-                transform: "translateY(-50%) rotate(-90deg)", // 텍스트 회전
-                transformOrigin: "center",
-                fontSize: "12px",
-                fontWeight: "bold",
-                color: "black",
-                whiteSpace: "nowrap",
-              }}
-            >
-              5-year patient survival (%)
-            </div>
           </div>
+          {/* Rotated Text */}
           <div
             style={{
               display: "flex",
@@ -294,6 +278,22 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
                 {num}
               </div>
             ))}
+          </div>
+          {/* Rotated Text */}
+          <div
+            style={{
+              position: "relative",
+              right: "-50px", // 범례 옆에 배치
+              top: "50%",
+              transform: "translateY(-50%) rotate(-90deg)", // 텍스트 회전
+              transformOrigin: "center",
+              fontSize: "12px",
+              fontWeight: "bold",
+              color: "black",
+              whiteSpace: "nowrap",
+            }}
+          >
+            5-year patient survival (%)
           </div>
         </div>
       </div>
