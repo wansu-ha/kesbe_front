@@ -4,6 +4,7 @@ import waitlist_graph from "../imgs/waitlist_graph.png";
 import survival_graph from "../imgs/survival_graph.png";
 import survival_legend from "../imgs/survival_legend.png";
 import Tooltip from "./Tooltip";
+import Marker from "./Marker";
 
 const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
   const waitlistTooltip = useTooltip({
@@ -94,16 +95,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
             }
             onMouseLeave={waitlistTooltip.handleMouseLeave}
           >
-            {/* 마커 표시 */}
-            <div
-              className="marker"
-              style={{
-                left: `${50}%`,
-                top: `${waitlistTooltip.coord.y}%`,
-                width: `${markerSize}px`,
-                height: `${markerSize}px`,
-              }}
-            />
+            <Marker left={50} top={waitlistTooltip.coord.y} width={markerSize} height={markerSize} />
             {/* "Waitlist" Text */}
             <div
               style={{
@@ -186,16 +178,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
             onMouseMove={(event) => { survivalTooltip.handleMouseMove(event, event.currentTarget.getBoundingClientRect()); }}
             onMouseLeave= {survivalTooltip.handleMouseLeave}
           >
-            {/* 마커 표시 */}
-            <div
-              className="marker"
-              style={{
-                left: `${survivalTooltip.coord.x}%`,
-                top: `${survivalTooltip.coord.y}%`,
-                width: `${markerSize}px`,
-                height: `${markerSize}px`,
-              }}
-            />
+            <Marker left={survivalTooltip.coord.x} top={survivalTooltip.coord.y} width={markerSize} height={markerSize} />
           </div>
           <div>{/* grid 의 2행 1열 */}</div>
           <div>{/* grid 의 2행 2열 */}</div>
