@@ -197,8 +197,8 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
               }}
             />
           </div>
-          <div></div>
-          <div></div>
+          <div>{/* grid 의 2행 1열 */}</div>
+          <div>{/* grid 의 2행 2열 */}</div>
           <div
             style={{
               display: "flex",
@@ -222,8 +222,8 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
               </div>
             ))}
           </div>
-          <div></div>
-          <div></div>
+          <div>{/* grid 의 3행 1열 */}</div>
+          <div>{/* grid 의 3행 2열 */}</div>
           {/* Rotated Text */}
           <div
             style={{
