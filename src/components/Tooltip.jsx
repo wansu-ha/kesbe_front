@@ -9,7 +9,7 @@ const Tooltip = ({ visible, x, y, value }) => {
         position: "fixed",
         left: `${x}px`,
         top: `${y}px`,
-        transform: "translate(10%, -220%)",
+        transform: "translate(10%, -110%)",
         background: "white",
         padding: "8px",
         borderRadius: "4px",
