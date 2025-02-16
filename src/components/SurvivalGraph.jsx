@@ -293,7 +293,7 @@ const SurvivalGraph = ({ epts, kdpi, excelData, markerSize }) => {
               whiteSpace: "nowrap",
             }}
           >
-            5-year patient survival (%)
+            10-year patient survival (%)
           </div>
         </div>
       </div>

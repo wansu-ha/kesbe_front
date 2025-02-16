@@ -69,7 +69,7 @@ const App = () => {
       {/* Result Cards */}
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Predicted 5-year survival if the candidate..
+          Predicted 10-year survival if the candidate..
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ResultCard
