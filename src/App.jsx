@@ -28,9 +28,8 @@ const App = () => {
   });
 
   const handleInputChange = (e, type) => {
-    const value = Math.min(Math.max(Number(e.target.value), 1), 100); // 1~100 범위로 제한
-    if (type === "epts") setEpts(value);
-    else if (type === "kdpi") setKdpi(value);
+    if (type === "epts") setEpts(e.target.value);
+    else if (type === "kdpi") setKdpi(e.target.value);
   };
 
   const handleResults = (newResults) => {
