@@ -5,7 +5,7 @@ const ResultCard = ({ title, base, value, colors, offset = 0 }) => {
 
   return (
     <div
-      className={`rounded-lg p-6 shadow-md text-center flex flex-col`}
+      className={`rounded-lg p-5 shadow-md text-center flex flex-col`}
       style={{ backgroundColor: colors[Math.ceil(value / 10) - 1 + offset] }}
     >
       <h3 className="text-lg font-semibold mb-2">{title}</h3>

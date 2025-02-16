@@ -71,7 +71,7 @@ const App = () => {
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Predicted 5-year survival if the candidate..
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ResultCard
             title="Remains on waitlist"
             base="based on the candidate's EPTS"
@@ -104,6 +104,24 @@ const App = () => {
               "lightcyan",      // 71~80
               "skyblue",        // 81~90
               "blue"            // 91~100
+            ]}
+          />
+          <ResultCard
+            title="Survival benefit"
+            base="based on the candidate's EPTS and the offered kidney's KDPI"
+            value={results.benefit}
+            colors={[
+              "#F0FFF0",      //  0~10
+              "#6EFF56",      // 21~30
+              "#00DD00",      // 21~30
+              "#008800",      // 31~40
+              "#006A00",      // 41~
+              "black",        // 41~
+              "black",        // 41~
+              "black",        // 41~
+              "black",        // 41~
+              "black",        // 41~
+              "black",        // 41~
             ]}
           />
         </div>
