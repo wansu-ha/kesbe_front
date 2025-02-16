@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/kesbe_front/static/css/main.4270a283.css",
-    "main.js": "/kesbe_front/static/js/main.27af1fe7.js",
+    "main.js": "/kesbe_front/static/js/main.746e3ecb.js",
     "static/js/488.a12d759e.chunk.js": "/kesbe_front/static/js/488.a12d759e.chunk.js",
     "static/media/survival_data.xlsx": "/kesbe_front/static/media/survival_data.b96d7107dc0184a17a56.xlsx",
     "static/media/benefit__graph.png": "/kesbe_front/static/media/benefit__graph.f66db29e4b4f69e1be46.png",
     "static/media/survival_graph.png": "/kesbe_front/static/media/survival_graph.71b00a6ae858f98ce11c.png",
     "index.html": "/kesbe_front/index.html",
     "main.4270a283.css.map": "/kesbe_front/static/css/main.4270a283.css.map",
-    "main.27af1fe7.js.map": "/kesbe_front/static/js/main.27af1fe7.js.map",
+    "main.746e3ecb.js.map": "/kesbe_front/static/js/main.746e3ecb.js.map",
     "488.a12d759e.chunk.js.map": "/kesbe_front/static/js/488.a12d759e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4270a283.css",
-    "static/js/main.27af1fe7.js"
+    "static/js/main.746e3ecb.js"
   ]
 }
